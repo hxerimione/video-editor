@@ -1,0 +1,309 @@
+.page__style {
+    background: #b02d29;
+    height: 100vh;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.page__style::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+.header {
+    position: sticky;
+    top: 0;
+    padding: 8px 16px;
+    border-bottom: 1px solid #eaeaea;
+    background: #fff;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__btn {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+.header__title {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.event__img {
+    width: 100%;
+}
+.percent__section {
+    padding: 40px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.percent {
+    position: relative;
+}
+
+.percent__section h2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b02d29;
+    text-align: center;
+    font-family: SUIT;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 150%; /* 39px */
+    top: 0;
+}
+.percent__section h3 {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 27px */
+}
+.percent__section h3 span {
+    color: #fff;
+}
+
+.filter__list {
+    background: #930f0b;
+    display: flex;
+    padding: 8px 16px;
+    gap: 8px;
+}
+
+.filter__btn {
+    border-radius: 20px;
+    background: #ab231f;
+    color: #fff;
+    text-align: center;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    background: rgba(216, 75, 71, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.filter__btn[data-active='true'] {
+    background: #d84b47;
+    color: #fff;
+    font-weight: 600;
+}
+
+.top__sales {
+    padding: 16px;
+}
+.top__sales h2 {
+    color: #fff;
+    font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 150%; /* 27px */
+}
+
+.top__sales_list {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    padding-bottom: 24px;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.top__sales_list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+.product {
+    border-radius: 0px 0px 16px 16px;
+    background: #fff;
+}
+
+.product__image {
+    border-radius: 16px 16px 0px 0px;
+    width: 240px !important;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+.product .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 16px 16px 0px 0px;
+    padding: 8px;
+    -webkit-border-radius: 16px 16px 0px 0px;
+    -moz-border-radius: 16px 16px 0px 0px;
+    -ms-border-radius: 16px 16px 0px 0px;
+    -o-border-radius: 16px 16px 0px 0px;
+}
+
+.product .content .type {
+    color: #707070;
+    font-family: SUIT;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+    margin: 0;
+}
+.product .content h3 {
+    height: 48px;
+    align-self: stretch;
+    color: #383838;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+}
+.product .content .price__layout {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.product .content .percent {
+    color: #f59a46;
+    font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 27px */
+    margin: 0;
+}
+.product .content .price {
+    color: #b02d29;
+    font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 27px */
+    margin: 0;
+}
+
+.show__all__btn {
+    width: 100%;
+    padding: 16px 8px;
+    border-radius: 8px;
+    background: #6b0603;
+    border: none;
+    color: #fff;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+}
+.show__all__btn:hover,
+.show__all__btn:focus,
+.show__all__btn:active {
+    background: #6b0603 !important;
+    border: none !important;
+}
+
+.coupon__section {
+    padding: 40px 16px;
+}
+.coupon__section h2 {
+    color: #fff;
+    font-family: SUIT;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 150%; /* 36px */
+    text-align: center;
+    margin-bottom: 28px;
+}
+.coupon__section p {
+    color: #fff;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 16px */
+    margin-bottom: 24px;
+    opacity: 0.8;
+}
+
+.coupon {
+    position: relative;
+}
+
+.coupon__content,
+.coupon__download {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.coupon__content p {
+    color: #707070;
+    font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 100%; /* 18px */
+    letter-spacing: 3.78px;
+    margin-bottom: 12px;
+}
+.coupon__content h4 {
+    color: #383838;
+    font-family: SUIT;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 100%; /* 40px */
+}
+.coupon__download p {
+    color: #fff;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 16px */
+    margin-bottom: 4px;
+}
+.coupon__download button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
