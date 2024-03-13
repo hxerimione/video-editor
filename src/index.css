@@ -127,14 +127,31 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-html,
-body,
-#root {
+html[color-mode='dark'] {
     height: 100%;
-    background: #1c1c1c;
+    --bg-color: #1c1c1c;
+    --color: #ebebeb;
 }
-
-.layout {
-    width: 393px;
-    margin: 0 auto;
+html[color-mode='light'] {
+    height: 100%;
+    --bg-color: #ebebeb;
+    --color: #1c1c1c;
+}
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--color) !important;
+}
+/* 큰화면 */
+@media (min-width: 650px) {
+    .layout {
+        width: 65vw;
+        margin: 0 auto;
+    }
+}
+/* 작은화면 */
+@media (max-width: 650px) {
+    .layout {
+        width: 90vw;
+        margin: 0 auto;
+    }
 }

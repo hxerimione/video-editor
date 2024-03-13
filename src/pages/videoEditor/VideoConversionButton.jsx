@@ -11,7 +11,7 @@ function VideoConversionButton({
     ffmpeg,
     onConversionStart = () => {},
     onConversionEnd = () => {},
-    onGifCreated = () => {},
+    // onGifCreated = () => {},
 }) {
     const convertToGif = async () => {
         // starting the conversion process
@@ -62,9 +62,12 @@ function VideoConversionButton({
         onConversionStart(true);
 
         const [min, max] = sliderValues;
+        console.log(videoPlayerState.duration); //15:08
         const minTime = sliderValueToVideoTime(videoPlayerState.duration, min);
         const maxTime = sliderValueToVideoTime(videoPlayerState.duration, max);
 
+        // console.log('1', min, max);
+        // console.log('minmax', minTime, maxTime);
         ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(videoFile));
         await ffmpeg.run(
             '-ss',
@@ -92,11 +95,10 @@ function VideoConversionButton({
     };
 
     return (
-        <>
+        <div className="video-conversion-container">
             <Button
                 onClick={() => convertToGif()}
                 className="gif__out__btn"
-                style={{ marginBottom: 16 }}
             >
                 <img
                     src={out}
@@ -119,7 +121,7 @@ function VideoConversionButton({
                     비디오 저장하기
                 </p>
             </Button>
-        </>
+        </div>
     );
 }
 

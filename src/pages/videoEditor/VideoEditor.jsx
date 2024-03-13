@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styles from './VideoEditor.module.css';
 import { createFFmpeg } from '@ffmpeg/ffmpeg';
 import { Button, Toast, Modal, Spinner, ToastContainer } from 'react-bootstrap';
@@ -7,9 +7,12 @@ import VideoPlayer from './VideoPlayer';
 import MultiRangeSlider from '../../components/MultiRangeSlider';
 import VideoConversionButton from './VideoConversionButton';
 import { sliderValueToVideoTime } from '../../utils/utils';
+
 const ffmpeg = createFFmpeg({ log: true });
 const VideoEditor = () => {
+    // const val = useContext(RangeContext);
     const [ffmpegLoaded, setFFmpegLoaded] = useState(false);
+    const [uploadCount, setUploadCount] = useState(0);
     const [videoFile, setVideoFile] = useState();
     const [videoPlayerState, setVideoPlayerState] = useState();
     const [videoPlayer, setVideoPlayer] = useState();
@@ -54,20 +57,14 @@ const VideoEditor = () => {
         if (!videoFile) {
             setVideoPlayerState(undefined);
         }
+        setUploadCount(uploadCount + 1);
+        // setSliderValues([0, 100]);
+
+        // onChange({ min: 0, max: 100 });
     }, [videoFile]);
     return (
-        <article
-            className="layout"
-            style={{ padding: '56px 16px' }}
-        >
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: 16,
-                }}
-            >
+        <article className={styles.layout}>
+            <div className={styles.editor_container}>
                 <h1 className={styles.title}>비디오 편집</h1>
 
                 {videoFile && (
@@ -101,9 +98,11 @@ const VideoEditor = () => {
                         }}
                     />
                 ) : (
-                    <div>
+                    <div className={styles.upload_container}>
                         <img
                             src={video_placeholder}
+                            width="100%"
+                            // heigh="100%"
                             alt="비디오를 입력하세요"
                         />
                         <input
@@ -124,32 +123,34 @@ const VideoEditor = () => {
             </section>
 
             {videoFile && (
-                <>
-                    <section>
-                        <MultiRangeSlider
-                            min={0}
-                            max={100}
-                            onChange={({ min, max }) => {
-                                setSliderValues([min, max]);
-                            }}
-                        />
-                        <VideoConversionButton
-                            videoPlayerState={videoPlayerState}
-                            sliderValues={sliderValues}
-                            videoFile={videoFile}
-                            ffmpeg={ffmpeg}
-                            onConversionStart={() => {
-                                setProcessing(true);
-                            }}
-                            onConversionEnd={() => {
-                                setProcessing(false);
-                                setShow(true);
-                            }}
-                        />
-                    </section>
-                </>
+                <section>
+                    <MultiRangeSlider
+                        // min={sliderValues[0]}
+                        // max={sliderValues[1]}
+                        min={0}
+                        max={100}
+                        onChange={({ min, max }) => {
+                            setSliderValues([min, max]);
+                        }}
+                        count={uploadCount}
+                    />
+
+                    <VideoConversionButton
+                        videoPlayerState={videoPlayerState}
+                        sliderValues={sliderValues}
+                        videoFile={videoFile}
+                        ffmpeg={ffmpeg}
+                        onConversionStart={() => {
+                            setProcessing(true);
+                        }}
+                        onConversionEnd={() => {
+                            setProcessing(false);
+                            setShow(true);
+                        }}
+                    />
+                </section>
             )}
-            <ToastContainer
+            {/* <ToastContainer
                 className="p-3"
                 position={'top-center'}
                 style={{ zIndex: 1 }}
@@ -195,7 +196,7 @@ const VideoEditor = () => {
                         내보내기가 진행중입니다.
                     </p>
                 </div>
-            </Modal>
+            </Modal> */}
         </article>
     );
 };

@@ -1,0 +1,12 @@
+footer {
+    position: relative;
+    padding-bottom: 16px;
+}
+footer p span {
+    color: inherit;
+    margin: 10px 10px 10px 10px;
+}
+.footer-line {
+    border: 1px solid #cacaca;
+    margin-bottom: 16px;
+}
