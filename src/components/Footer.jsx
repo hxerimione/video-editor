@@ -4,21 +4,20 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer-line"></div>
-            {/* <nav>
+            <nav>
                 <a
-                    href="https://cocoder.tistory.com"
+                    href="https://velog.io/@hxerimione"
                     target="_blank"
                 >
                     Blog
                 </a>{' '}
-                |
                 <a
-                    href="https://github.com/cocoder16"
+                    href="https://github.com/hxerimione"
                     target="_blank"
                 >
                     Github
                 </a>
-            </nav> */}
+            </nav>
             <p>
                 <span>저자 : hxerimione</span>
                 <br />

@@ -1,8 +1,8 @@
 .layout {
     padding: 20px 16px;
-    height: auto;
     min-height: 100%;
-    /* text-align: center; */
+
+    height: auto;
 }
 .editor_container {
     display: flex;
@@ -10,7 +10,6 @@
     align-items: center;
     padding-bottom: 10px;
     margin-bottom: 30;
-    /* border: 1px solid white; */
 }
 .title {
     color: inherit;

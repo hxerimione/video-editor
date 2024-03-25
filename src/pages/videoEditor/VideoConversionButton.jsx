@@ -11,39 +11,40 @@ function VideoConversionButton({
     ffmpeg,
     onConversionStart = () => {},
     onConversionEnd = () => {},
-    // onGifCreated = () => {},
 }) {
     const convertToGif = async () => {
-        // starting the conversion process
         onConversionStart(true);
 
         const inputFileName = 'input.mp4';
         const outputFileName = 'output.gif';
 
-        // writing the video file to memory
         ffmpeg.FS('writeFile', inputFileName, await fetchFile(videoFile));
 
         const [min, max] = sliderValues;
         const minTime = sliderValueToVideoTime(videoPlayerState.duration, min);
         const maxTime = sliderValueToVideoTime(videoPlayerState.duration, max);
 
-        // cutting the video and converting it to GIF with a FFMpeg command
+        const width = 1280;
+        const length = 720;
+        console.log(minTime, maxTime);
         await ffmpeg.run(
             '-i',
             inputFileName,
             '-ss',
             `${minTime}`,
-            '-to',
-            `${maxTime}`,
+            '-t',
+            `${maxTime - minTime}`,
             '-f',
             'gif',
+            '-r',
+            '20',
+            '-vf',
+            `scale=in_w/4:in_h/4`,
             outputFileName
         );
 
-        // reading the resulting file
         const data = ffmpeg.FS('readFile', outputFileName);
 
-        // converting the GIF file created by FFmpeg to a valid image URL
         const gifUrl = URL.createObjectURL(
             new Blob([data.buffer], { type: 'image/gif' })
         );
@@ -53,8 +54,6 @@ function VideoConversionButton({
         link.setAttribute('download', '');
         link.click();
 
-        // ending the conversion process
-
         onConversionEnd(false);
     };
 
@@ -62,12 +61,10 @@ function VideoConversionButton({
         onConversionStart(true);
 
         const [min, max] = sliderValues;
-        console.log(videoPlayerState.duration); //15:08
+        console.log(videoPlayerState.duration);
         const minTime = sliderValueToVideoTime(videoPlayerState.duration, min);
         const maxTime = sliderValueToVideoTime(videoPlayerState.duration, max);
-
-        // console.log('1', min, max);
-        // console.log('minmax', minTime, maxTime);
+        console.log(minTime, maxTime);
         ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(videoFile));
         await ffmpeg.run(
             '-ss',
@@ -75,7 +72,7 @@ function VideoConversionButton({
             '-i',
             'input.mp4',
             '-t',
-            `${maxTime}`,
+            `${maxTime - minTime}`,
             '-c',
             'copy',
             'output.mp4'

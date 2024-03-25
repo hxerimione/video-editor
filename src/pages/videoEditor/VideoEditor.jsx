@@ -1,16 +1,17 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import styles from './VideoEditor.module.css';
 import { createFFmpeg } from '@ffmpeg/ffmpeg';
-import { Button, Toast, Modal, Spinner, ToastContainer } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import video_placeholder from '../../assets/images/editor/video_placeholder.png';
 import VideoPlayer from './VideoPlayer';
 import MultiRangeSlider from '../../components/MultiRangeSlider';
 import VideoConversionButton from './VideoConversionButton';
 import { sliderValueToVideoTime } from '../../utils/utils';
 
-const ffmpeg = createFFmpeg({ log: true });
+const ffmpeg = createFFmpeg({
+    log: true,
+});
 const VideoEditor = () => {
-    // const val = useContext(RangeContext);
     const [ffmpegLoaded, setFFmpegLoaded] = useState(false);
     const [uploadCount, setUploadCount] = useState(0);
     const [videoFile, setVideoFile] = useState();
@@ -58,9 +59,6 @@ const VideoEditor = () => {
             setVideoPlayerState(undefined);
         }
         setUploadCount(uploadCount + 1);
-        // setSliderValues([0, 100]);
-
-        // onChange({ min: 0, max: 100 });
     }, [videoFile]);
     return (
         <article className={styles.layout}>
@@ -102,7 +100,6 @@ const VideoEditor = () => {
                         <img
                             src={video_placeholder}
                             width="100%"
-                            // heigh="100%"
                             alt="비디오를 입력하세요"
                         />
                         <input
@@ -125,8 +122,6 @@ const VideoEditor = () => {
             {videoFile && (
                 <section>
                     <MultiRangeSlider
-                        // min={sliderValues[0]}
-                        // max={sliderValues[1]}
                         min={0}
                         max={100}
                         onChange={({ min, max }) => {
@@ -150,53 +145,6 @@ const VideoEditor = () => {
                     />
                 </section>
             )}
-            {/* <ToastContainer
-                className="p-3"
-                position={'top-center'}
-                style={{ zIndex: 1 }}
-            >
-                <Toast
-                    onClose={() => setShow(false)}
-                    show={show}
-                    delay={2000}
-                    bg="dark"
-                    autohide
-                >
-                    <Toast.Header closeButton={false}>
-                        <strong className="me-auto">Video Editor</strong>
-                    </Toast.Header>
-                    <Toast.Body>내보내기가 완료되었습니다.</Toast.Body>
-                </Toast>
-            </ToastContainer>
-
-            <Modal
-                show={processing}
-                onHide={() => setProcessing(false)}
-                backdrop={false}
-                keyboard={false}
-                centered
-                size="sm"
-            >
-                <div style={{ textAlign: 'center' }}>
-                    <Spinner
-                        animation="border"
-                        role="status"
-                    >
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-
-                    <p
-                        style={{
-                            marginTop: 16,
-                            fontSize: 14,
-                            fontWeight: 600,
-                            color: '#c8c8c8',
-                        }}
-                    >
-                        내보내기가 진행중입니다.
-                    </p>
-                </div>
-            </Modal> */}
         </article>
     );
 };

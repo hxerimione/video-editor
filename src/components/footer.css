@@ -1,6 +1,12 @@
 footer {
     position: relative;
+
     padding-bottom: 16px;
+    /* bottom: 0; */
+    /* transform: translateY(-122px); */
+}
+footer nav {
+    margin: 10px 10px 10px 10px;
 }
 footer p span {
     color: inherit;

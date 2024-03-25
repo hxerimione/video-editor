@@ -17,7 +17,7 @@ export const toTimeString = (sec, showMilliSeconds = true) => {
     if (seconds < 10) {
         seconds = '0' + seconds;
     }
-    let maltissaRegex = /\..*$/; // matches the decimal point and the digits after it e.g if the number is 4.567 it matches .567
+    let maltissaRegex = /\..*$/;
 
     let millisec = String(seconds).match(maltissaRegex);
     return (

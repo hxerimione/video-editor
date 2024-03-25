@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { DarkModeStateContext } from '../App';
 import './header.css';
-// import logo from '../assets/icons/logo.png';
+
 const Header = () => {
     const env = process.env;
     const { handleDarkMode, isDark } = useContext(DarkModeStateContext);
     env.PUBLIC_URL = env.PUBLIC_URL || '';
-    // const navigate = useNavigate();
+
     const logo = require('../assets/icons/logo.png');
     const dark = require('../assets/icons/dark.png');
     const light = require('../assets/icons/light.png');
